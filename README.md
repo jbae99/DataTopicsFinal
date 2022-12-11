@@ -1,1 +1,8 @@
-# Land use CLassificaiton CNN Model using Tensorflow and Keras
+# Land use Classificaiton CNN Model using Tensorflow and Keras
+This project creates a fairly simple Convolutional Neural Network for the purposes of Land-Use classification from sattelite image data. 
+
+I had originally designed the project on a Google Colab Jupyter notebook, however it occured to me that Tensorflow supports GPU acceleration, and I have a GPU capable of performing such operations. So, I moved the project to my local disk and used Tensorflows GPU distribution to build, fit, and test the model. 
+
+I found that my models accuracy was rather poor when using 3 or less convolution and pooling layers. Regardless of combinations involving Convolutions, Seperable Convolutions, Max Pooling, and Average Pooling, I was unable to achieve greater than a 0.60 accuracy score. So, I used [this](https://keras.io/examples/vision/image_classification_from_scratch/) very helpful example to produce a slightly more complex CNN. This features a for loop which iterates over several convolution and pooling layers, keeping some residual and summing the results of these convolutions with the residual. This model sees much better results, achieving 0.92 accuracy after 25 epochs and a 0.80 accuracy on the testing data. I believe that the number of classes in this dataset (21) is part of the reason that the more robust model yeilded better results. Additionally, layers such as global average pooling were not useful to me as this would compress too much information for the model to create acceptable weights. 
+
+I plan on running the test again with 50 epochs and seeing the results, as well as utilizing some machine leraning models such as a Support Vector Machine to classify the dataset and compare those results against the CNN. 
